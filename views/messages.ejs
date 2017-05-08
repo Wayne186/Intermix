@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="messages">
+
+<head>
+    <script src="/js/env.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="/js/messages.js"></script>
+    <script src="/js/angular-ui-bootstrap-modal.js"></script>
+    <link href="/css/messages.css" rel="stylesheet" type="text/css">
+    <link href="/css/banner.css" rel="stylesheet" type="text/css">
+</head>
+
+<body ng-controller="messageController">
+    <div class="supreme-container">
+        <div id="nav_wrapper">
+
+            <!--Banner-->
+
+            <head>
+                <h1><a href="/home/">Intermix</a></h1>
+            </head>
+            <ul>
+                <li><a href="/home/">Home</a></li>
+                <li><a href="/myProfile/">Profile</a></li>
+                <li><a href="/findUser/">Find a User</a></li>
+                <li><a href="/messages/">Messages</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/logout/">Logout</a></li>
+                <!-- should call a logout function -->
+            </ul>
+        </div>
+
+        <div id="div2">
+            <button ng-click="open()">Start New Message</button>
+        </div>
+
+        <!-- Box for Loaded Message-->
+        <div class="mainbox">
+            <div class="showChat" ng-show="viewMessage" ng-repeat="x in conversation">
+                <div ng-repeat="message in x.data.messages">
+                    <div class="sender"> {{ message.author }}</div>: {{ message.composedMessage }}
+                </div>
+            </div>
+            <input type="text" ng-show="showReply" class="replyBar" placeholder="Send a reply" ng-model="newMessage.composedMessage"></input>
+            <button class="btn btn-primary" id="sendButton" ng-show="showSend" ng-click="sendMessage()">Send Message</button>
+        </div>
+
+        <!-- Box for Conversations-->
+        <div class="sidebox">
+            <!--<h2>
+                Search Conversations
+            </h2>
+            <input id="search" type="text" ng-model="searchBox">-->
+            <h2>
+                Conversations
+            </h2>
+            <div ng-repeat="chat in conversations">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h4>Conversation with <i>{{ chat.participants[0] }}</i> and <i>{{ chat.participants[1] }}</i></h4>
+                        <button class="btn btn-primary" ng-click="view(chat)">Open</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Create Message modal-->
+    <div modal="showModal" close="cancel()">
+        <div id="mhead">
+            <h4>New Message</h4>
+        </div>
+        <div class="modal-body">
+            <form name="mcf" ng-submit="submitMCF(mcf.$valid)">
+                <br><br><br>
+                <label for="description">Enter User</label>
+                <br>
+                <input type="text" ng-model="mcfModel.recipient" required></input>
+                <br>
+
+            </form>
+        </div>
+        <div id="mfoot">
+            <button class="button" type="submit" ng-click="submitMCF(mcf.$valid)">Create</button>
+            <button class="button cancel" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+
+</body>
+
+<!-- Modules -->
+<!--script src="/js/auto-validate.js"></script -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+</html>

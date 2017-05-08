@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html lang="en" ng-app="profile">
+
+<head>
+    <script src="/js/env.js"></script>
+    <title>Intermix.com </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="/js/profile.js"></script>
+    <script src="/js/angular-ui-bootstrap-modal.js"></script>
+    <link href="/css/profile.css" rel="stylesheet" type="text/css">
+    <link href="/css/banner.css" rel="stylesheet" type="text/css">
+</head>
+
+<body ng-controller="profileController">
+    <div class="supreme-container" ng-init="loadData()">
+        <div id="nav_wrapper">
+
+            <!--Banner-->
+
+            <head>
+                <h1><a href="/home/">Intermix</a></h1>
+            </head>
+            <ul>
+                <li><a href="/home/">Home</a></li>
+                <li><a href="/myProfile/">Profile</a></li>
+                <li><a href="/findUser/">Find a User</a></li>
+                <li><a href="/messages/">Messages</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/logout/">Logout</a></li>
+            </ul>
+        </div>
+
+        <!--Displays user info-->
+        <div id="profileBar">
+            <img src="/img/profile.png" style="float:right" alt="profile" width="200" height="200">
+            <div id="div2" style="text-align: center;">
+                <button ng-click="open(user)">Edit Profile</button>
+            </div>
+            </br>
+            <div ng-repeat="u in users">>
+                <ul>
+                    <li>Username: {{ u.username }}</li>
+                    </br></br>
+                    <li>Skills: {{ u.skills }}</li>
+                </ul>
+            </div>
+            </br>
+            <div id="rate">
+                <h1>Rating: <span id="target"></span></h1>
+            </div>
+        </div>
+
+        <!--Loads user projects-->
+        <div class="mainbox" ng-init="projList=['proj1', 'proj2', 'proj3', 'proj4']">
+            <!-- <ul>
+                <li ng-repeat="proj in projList">{{proj}}</li>
+            </ul> -->
+            <input class="searchBox" type="text" ng-model="searchBox" placeholder="Search for Projects...">
+            <br><br>
+            <div ng-repeat="project in projects | filter: searchBox">
+                <div class="thumbnail">
+                    <div id="displayProject" class="caption" style="font-size: 14px;">
+                        <h4>Project Name: {{ project.projectName }}</h4>
+                        <p>Description: {{ project.projectDescription }}</p>
+                        <p>Necessary Skills: {{ project.projectSkills }}</p>
+                        <button class="btn btn-primary" ng-click="editProject(project)" id="edit" ng-show="!addProject">Edit Project</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Edit Profile Form -->
+    <div modal="showEdit" close="cancel()">
+        <div id="mhead">
+            <h4>Edit Profile</h4>
+            <br> <br>
+        </div>
+        <div class="modal-body">
+            <form name="editForm" ng-submit="sendProfile()" ng-repeat="user in users">
+                <h2>{{ user.username }} ({{ user.email }})</h2>
+                <label>Skills</label>
+                <br>
+                <textarea id="confirmationText" class="text" cols="20" rows="10" ng-model="editProfile.skills"></textarea>
+                <br>
+                <label>New Password</label>
+                <br>
+                <input class="form-control" id="password" ng-model="editProfile.password">
+            </form>
+        </div>
+        <div id="mfoot">
+            <button class="button" type="submit" ng-click="sendProfile()">Change</button>
+            <button class="button cancel" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Edit Project Form -->
+    <div modal="showProject" close="cancel()">
+        <div id="mhead">
+            <h4>{{ editModel.projectName }}</h4>
+            <br> <br>
+        </div>
+        <div class="modal-body">
+            <form name="edit" ng-submit="submitEdit()">
+
+                <!-- Box for entering the description -->
+                <label for="description">Description</label>
+                <input type "text" ng-model="editModel.projectDescription" required></input>
+                <br>
+                <!-- Box for skills -->
+                <label for="skills">Skills</label>
+                <br>
+                <textarea type "text" cols="20" rows="8" ng-model="editModel.projectSkills" required placeholder="Separated by a comma, please. Ex. Java, C, C++, etc."></textarea>
+            </form>
+
+            <!-- Area for displaying all project members -->
+            <h2>
+                <u>Members</u>
+            </h2>
+            <div ng-repeat="teamMember in editModel.teamMembers">
+                <h4>{{ teamMember }}
+                    <button class="remove" ng-click="remove(teamMember)">Remove</button>
+                </h4>
+            </div>
+        </div>
+        <div id="mfoot">
+            <button class="button" type="submit" ng-click="submitEdit()">Update</button>
+            <button class="button cancel" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+
+</body>
+
+<!-- Modules -->
+<!--script src="/js/auto-validate.js"></script -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+</html>

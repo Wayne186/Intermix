@@ -1,0 +1,207 @@
+body{
+    font-family: arial, sans-serif;
+    text-align: center;
+}
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+/*The whole main division*/
+#div1 {
+    width: 100%;
+    height: 745px;
+    background: url(../img/welcome-background.jpg);
+    margin-top: 0;
+    background-size: cover;
+}
+
+/*The transparent top bar*/
+#nav_wrapper{
+    height: 80px;
+    width: 100%;
+    background: #033347;
+    margin-top: 0;
+    opacity: 0.7;
+    filter：alpha (opacity=70);
+}
+
+#nav_wrapper a{
+    color: white;
+    text-decoration: none;
+    padding: 10px
+}
+
+#nav_wrapper h1{
+    font-family:"AppleGothic";
+    float:left;
+    font-size: 35px;
+    color: white;
+    padding: 20px;
+}
+
+#nav_wrapper h2{
+    font-family:"AppleGothic";
+    float:right;
+    font-size: 20px;
+    color: white;
+    padding: 30px;
+}
+
+/*pop up login form*/
+#login{
+    display: none;
+    z-index: 1;
+    width: 320px;
+    height: 175px;
+    right: 0;
+    position: absolute;
+    background: #ecf0f1;
+    border-radius: 5px;
+    padding-top: 5px;
+}
+
+#login input[type="submit"]{
+    padding:10px 50px; 
+    cursor:pointer;
+    border:2px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-family:"arial";
+    font-size: 15px;
+    background: #1bc6a4;
+    margin: 5px 0;
+}
+
+#login input[type="text"] {
+    padding:10px 15px;
+    cursor:pointer;
+    width: 78%;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 5px 0;
+}
+
+#login input[type="password"] {
+    padding:10px 15px;
+    cursor:pointer;
+    width: 78%;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 5px 0;
+}
+
+#login input[type="text"]:focus, 
+#login input[type="password"]:focus {
+  outline: none;
+  box-shadow: 0 0 2px 2px #1abc9c;
+}
+
+/*The main division*/
+#div2 {
+    height: 300px;
+    width: 100%;
+    position: absolute;
+    top: 32%;
+    margin-top: -150;
+}
+
+#div2 h1{
+    font-family:"Heiti SC";
+    font-size: 60px;
+    color: white;
+    padding: 20px;
+    color: white;
+}
+
+#div2 button{
+    padding:15px 20px; 
+    background:#033347;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+}
+
+/*Account Creation Form*/
+#accountCreationForm{
+    display: none;
+    z-index: 1;
+    width: 600px;
+    /*height: 560px;*/
+    height: 510px;
+    right: 29%;
+    position: fixed;
+    background: #ecf0f1;
+    border-radius: 5px;
+    padding-top: 5px;
+}
+
+#accountCreationForm input[type="submit"]{
+    padding:10px 80px; 
+    cursor:pointer;
+    border:2px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-family:"arial";
+    font-style: strong;
+    font-size: 18px;
+    background: #1bc6a4;
+    margin: 8px 0;
+    border-style: outset;
+    border-width:2px;
+    border-color:#b1b9bb;
+}
+
+#accountCreationForm input[type="text"] {
+    padding:10px 15px;
+    cursor:pointer;
+    width: 78%;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 10px 0;
+}
+
+#accountCreationForm input[type="email"] {
+    padding:10px 15px;
+    cursor:pointer;
+    width: 78%;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 10px 0;
+}
+
+#accountCreationForm textarea {
+    padding:10px 15px;
+    cursor:pointer;
+    width: 78%;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 10px 0;
+}
+
+#accountCreationForm input[type="password"] {
+    padding:10px 15px;
+    cursor:pointer;
+    width: 78%;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 10px 0;
+}
+
+#accountCreationForm input[type="email"]:focus, 
+#accountCreationForm input[type="text"]:focus, 
+#accountCreationForm textarea:focus, 
+#accountCreationForm input[type="password"]:focus {
+  outline: none;
+  box-shadow: 0 0 2px 2px #1abc9c;
+}

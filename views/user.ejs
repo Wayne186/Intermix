@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html lang="en" ng-app="userPage">
+
+<head>
+    <script src="/js/env.js"></script>
+    <title>Intermix.com </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="/js/user.js"></script>
+    <script src="/js/angular-ui-bootstrap-modal.js"></script>
+    <link href="/css/user.css" rel="stylesheet" type="text/css">
+    <link href="/css/banner.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div id="div1" ng-controller="userCtrl">
+
+        <!--Banner-->
+        <div id="nav_wrapper">
+
+            <head>
+                <h1><a href="/home/">Intermix</a></h1>
+            </head>
+            <ul>
+                <li><a href="/home/">Home</a></li>
+                <li><a href="/myProfile/">Profile</a></li>
+                <li><a href="/findUser/">Find a User</a></li>
+                <li><a href="/messages/">Messages</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/logout/">Logout</a></li>
+            </ul>
+        </div>
+
+        <div id="profileBar">
+            <!--<div ng-repeat="u in users">>
+                <ul>
+                    <li>Username: {{ u.username }}</li></br></br>
+                    <li>Skills: {{ u.skills }}</li>
+                </ul>
+            </div>
+            </br>
+            <div id="rate">
+                <h1>Rating: <span id="target"></span></h1>
+            </div>-->
+            <div ng-repeat="x in user" id="found">
+                </br>
+                <h1>Username: {{ x.username }}</h1>
+                </br>
+                <h2>Email: {{ x.email }}</h2>
+                </br>
+                <h2>Skills: {{ x.skills }}</h3>
+                </br></br>
+                <h2>Comments And Ratings</h2>
+                <div ng-repeat="ur in userRate">
+                    <ul>
+                        </br>
+                        <li>From: {{ ur.ratingbyUsername }}, Rating: {{ ur.rating }}</li>
+                        <li>Comment: {{ ur.comments }}</li>
+                    </ul>
+                </div>
+                <button class="openRateBtn" id = "openRateBtn" ng-click="openRate()">Rate User</button>
+            </div>
+        </div>
+
+        <!--Finds, displays searched-user data-->
+        <div id="projListDiv">
+            <form name="search" ng-submit="findUser(search)">
+                <!-- Box for entering the name-->
+                <input class="searchBox" type="text" ng-model="findModel.username" placeholder="Search for Users...">
+            </form>
+            <button class="btn btn-primary" ng-click="findUser(); findRate(); findProj()">Find User</button>
+            <br>
+            <div ng-repeat="project in projects">
+                <div id="displayProject" class="caption" style="font-size: 14px;">
+                    <h4>Project Name: {{ project.projectName }}</h4>
+                    <p>Description: {{ project.projectDescription }}</p>
+                    <p>Necessary Skills: {{ project.projectSkills }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!--Displays rating forms bar-->
+        <div id="rateForm" modal="rateFormModal" close="cancel()" ng-init="Name">
+            <h2>{{ rateModel.ratingForUsername }}</h2>
+            </br>
+            <input type="text" placeholder="Enter a number from 1-5" ng-model="rateModel.rating"></input>
+            </br></br>
+            <textarea placeholder="comment" rows="8" ng-model="rateModel.comments"></textarea>
+            </br></br>
+            <button id="rateBtn" ng-click="sendRating()">Send Rating</button>
+            <button id="cancelBtn" ng-click="cancel()">cancel</button>
+        </div>
+
+    </div>
+
+</body>
+
+<!-- Modules -->
+<!--script src="/js/auto-validate.js"></script -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+</html>

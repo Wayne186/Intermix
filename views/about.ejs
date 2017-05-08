@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html ng-app="about">
+
+<head>
+	<script src="/js/env.js"></script>
+	<title>About Intermix</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="/js/about.js"></script>
+	<link rel=stylesheet type="text/css" href="/css/about.css">
+	<link href="/css/banner.css" rel="stylesheet" type="text/css">
+</head>
+
+<body ng-controller="MainController">
+
+	<div id="nav_wrapper">
+
+		<head>
+			<h1><a href="/home/">Intermix</a></h1>
+		</head>
+		<ul>
+			<li><a href="/home/">Home</a></li>
+			<li><a href="/myProfile/">Profile</a></li>
+			<li><a href="/findUser/">Find a User</a></li>
+			<li><a href="/messages/">Messages</a></li>
+			<li><a href="/about/">About</a></li>
+			<li><a href="/logout/">Logout</a></li>
+			<!-- should call a logout function -->
+		</ul>
+	</div>
+
+
+	<div class="sidebox">
+		<h1>
+			<u>A Little About Us</u>
+		</h1>
+		<p id="mainboxlink">Intermix was created by four computer science students at <a href="http://www.purdue.edu/" target="_blank">Purdue University</a>.
+			Their goal in creating the site was to offer a hub for people wanting to work on or create projects of <i>all kinds</i>.</p>
+		<h3>Want to give us some feedback? Just fill out the form on the right!</h3>
+	</div>
+
+	<div class="mainbox">
+		<form id="form" class="form-group">
+			<div>
+				<label for="feedback">Feedback</label>
+				<br>
+				<textarea class="feedback" name="Feedback" rows="20" cols="90" ng-model="formModel.feedback" required required-err-type="noInfo"></textarea>
+			</div>
+
+		</form>
+
+		<div>
+			<button class="button" ng-click="onSubmit()" style="color: ivory">Submit
+				</button>
+		</div>
+	</div>
+
+</body>
+
+
+</html>

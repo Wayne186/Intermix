@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="en" ng-app="frontPage">
+
+<head>
+    <script src="/js/env.js"></script>
+    <title>Intermix.com </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+</head>
+
+<body>
+    <div id="div1">
+
+        <!--Banner-->
+        <div id="nav_wrapper">
+
+            <head>
+                <h1><a href="Intermix.com">Intermix</a></h1>
+            </head>
+            <pre><h2><a href="#" id="loginBtn">Sign In              </a></h2></pre>
+        </div>
+
+        <!--Log-in button-->
+        <div id="login" ng-controller="signInCtrl">
+            <span class="closeLogin">&times;</span>
+            <form name="signInForm" ng-submit="submitSignInForm(signInForm.$valid)">
+                <input type="text" placeholder="Username" class="form-control" ng-model="signInFormModel.username" id="name" name="username"
+                    required="required"></br>
+                <input type="password" placeholder="Password" class="form-control" ng-model="signInFormModel.password" id="password" required="required"></br>
+                <input type="submit" value="Sign In">
+            </form>
+        </div>
+        <!-- <p>{{ signIn | json }}</p> -->
+
+        <!--Create account area-->
+        <div id="div2">
+            <h1>Here is </br>something to say</br>
+            </h1>
+            </br>
+            <button id="acfBtn">Create Account</button></br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+        </div>
+
+        <div id="accountCreationForm" ng-controller="acfCtrl">
+            <span class="closeACF">&times;</span>
+            <form name="acf" ng-submit="submitACF(acf.$valid)">
+                <input type="text" placeholder="Username" class="form-control" ng-model="acfModel.username" id="username" name="username"
+                    required="required"></br>
+                <input type="email" placeholder="email@example.com" class="form-control" ng-model="acfModel.email" id="email" name="email"
+                    required="required"></br>
+                <textarea id="confirmationText" class="text" placeholder="(Optional)Fill in your skill in this format:c, java, c++..." cols="20"
+                    rows="10" ng-model="acfModel.skills"></textarea>
+                <input type="password" placeholder="Password" class="form-control" ng-model="acfModel.password" id="password" required="required"></br>
+                <!-- <input type="password" 
+                    placeholder="Confirm your password" 
+                    class="form-control"
+                    ng-model="acfModel.cfPassword"
+                    id="cfPassword"
+                    required="required"
+                    ></br>
+                -->
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+    </div>
+
+</body>
+
+<!-- Modules -->
+<!--script src="/js/auto-validate.js"></script -->
+
+<!--Local JS Scripts-->
+<script src="js/popup.js"></script>
+<script src="js/sendForm.js"></script>
+
+</html>

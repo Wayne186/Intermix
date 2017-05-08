@@ -1,0 +1,65 @@
+{
+  "name": "intermix",
+  "version": "1.0.0",
+  "description": "Intermix project sharing and team building website",
+  "main": "server.js",
+  "dependencies": {
+    "angular-auto-validate": "^1.19.0",
+    "angular-bootstrap": "^0.12.2",
+    "bcrypt": "^1.0.2",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "1.17.1",
+    "bootstrap": "^3.3.7",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "4.0.0",
+    "ejs": "*",
+    "express": "4.14.1",
+    "express-session": "^1.15.1",
+    "faker": "4.1.0",
+    "mongoose": "4.9.2",
+    "morgan": "^1.8.1",
+    "nodemailer": "3.1.4",
+    "nodemailer-mailgun-transport": "^1.2.4",
+    "nodemailer-smtp-transport": "^2.7.2",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.0.0",
+    "request": "^2.79.0",
+    "should": "11.2.1",
+    "socket.io": "1.7.3",
+    "superagent": "3.5.2",
+    "supertest": "3.0.0"
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/CS307/team-project.git"
+  },
+  "keywords": [
+    "node",
+    "intermix"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/CS307/team-project/issues"
+  },
+  "homepage": "https://gitlab.com/CS307/team-project#README",
+  "devDependencies": {
+    "body-parser": "1.17.1",
+    "cookie-parser": "1.4.3",
+    "eslint": "^3.16.0",
+    "eslint-config-google": "^0.7.1",
+    "mocha": "3.2.0",
+    "morgan": "1.8.1",
+    "should": "11.2.1"
+  }
+}

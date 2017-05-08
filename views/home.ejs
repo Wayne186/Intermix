@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html ng-app="homeapp">
+
+<head>
+	<script src="/js/env.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="/js/home.js"></script>
+	<script src="/js/angular-ui-bootstrap-modal.js"></script>
+	<link href="/css/home.css" rel="stylesheet" type="text/css">
+	<link href="/css/banner.css" rel="stylesheet" type="text/css">
+</head>
+
+<body ng-controller="homeController">
+	<div class="supreme-container">
+		<div id="nav_wrapper">
+
+			<!--Banner-->
+
+			<head>
+				<h1><a href="/home/">Intermix</a></h1>
+			</head>
+			<ul>
+				<li><a href="/home/">Home</a></li>
+				<li><a href="/myProfile/">Profile</a></li>
+				<li><a href="/findUser/">Find a User</a></li>
+				<li><a href="/messages/">Messages</a></li>
+				<li><a href="/about/">About</a></li>
+				<li><a href="/logout/">Logout</a></li>
+				<!-- should call a logout function -->
+			</ul>
+		</div>
+
+		<div id="div2">
+			<button ng-click="open()">Create a Project</button>
+		</div>
+
+		<div class="dropdown">
+			<button class="dropbtn" onclick="drop()">Sort Projects By</button>
+			<div id="drop" class="dropdown-content">
+				<li ng-class="{'actve': option=='projectName'}"><a ng-click="selectOption('projectName')">Name</a></li>
+				<!--<li ng-class="{'actve': option=='projectSkills'}"><a ng-click="selectOption('projectSkills')">Skills</a></li>-->
+				<li ng-class="{'actve': option=='projectDescription'}"><a ng-click="selectOption('projectDescription')">Description</a></li>
+				<!--<li ng-class="{'actve': option=='createdAt'}"><a ng-click="selectOption('createdAt')">Newest</a></li>-->
+			</div>
+		</div>
+
+		<!-- Box to Display Projects -->
+		<div class="mainbox">
+			<div ng-repeat="project in projects | filter: searchBox | orderBy: option">
+				<div class="thumbnail">
+					<div class="caption" style="font-size: 14px;">
+						<h4>Project Name: {{ project.projectName }}</h4>
+						<p>Description: {{ project.projectDescription }}</p>
+						<p>Necessary Skills: {{ project.projectSkills }}</p>
+						<!--<button class="btn btn-primary" ng-click="editProject(project)" id="edit" ng-show="!editCP">Edit Project</button>-->
+						<button class="btn btn-primary" ng-click="apply(project)" id="apply" ng-show="!addProject">Apply to Project</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Box to Display Filters -->
+		<div class="sidebox">
+			<h2>
+				Search By
+			</h2>
+			<br>
+			<label>Name</label>
+			<input id="search" type="text" ng-model="searchBox.projectName">
+			<br><br><br><br>
+			<label>Skills</label>
+			<input id="search" type="text" ng-model="searchBox.projectSkills">
+			<br><br><br><br>
+			<label>Description</label>
+			<input id="search" type="text" ng-model="searchBox.projectDescription">
+		</div>
+	</div>
+
+	<!-- Edit Project Form -->
+	<div modal="showEdit" close="cancel()">
+		<div id="mhead">
+			<h4>Project Editing</h4>
+			<br> <br>
+		</div>
+		<div class="modal-body">
+			<form name="edit" ng-submit="submitEdit()">
+
+				<h3>{{ editModel.projectName }}</h3>
+				<br>
+
+				<!-- Box for entering the description -->
+				<label for="description">Description</label>
+				<input type "text" ng-model="editModel.projectDescription" required></input>
+				<br>
+
+				<!-- Box for skills -->
+				<label for="skills">Skills</label>
+				<br>
+				<textarea type "text" cols="20" rows="10" ng-model="editModel.projectSkills" required placeholder="Separated by a comma, please. Ex. Java, C, C++, etc."></textarea>
+			</form>
+		</div>
+		<div id="mfoot">
+			<button class="button" type="submit" ng-click="submitEdit()">Change</button>
+			<button class="button cancel" ng-click="cancel()">Cancel</button>
+		</div>
+	</div>
+
+	<!-- Create Project Form -->
+	<div modal="showModal" close="cancel()">
+		<div id="mhead">
+			<h4>Project Creation</h4>
+			<br> <br>
+		</div>
+		<div class="modal-body">
+			<form name="pcf" ng-submit="submitPCF(pcf.$valid)">
+				<!-- Box for entering the name-->
+				<label for="name">Project Name</label>
+				<input type="text" ng-model="pcfModel.projectName" id="projectName" required>
+				<br>
+
+				<!-- Box for entering the description -->
+				<label for="description">Description</label>
+				<input type "text" ng-model="pcfModel.projectDescription" required></input>
+				<br>
+
+				<!-- Box for skills -->
+				<label for="skills">Skills</label>
+				<br>
+				<textarea type "text" cols="20" rows="10" ng-model="pcfModel.projectSkills" required placeholder="Separated by a comma, please. Ex. Java, C, C++, etc."></textarea>
+			</form>
+		</div>
+		<div id="mfoot">
+			<button class="button" type="submit" ng-click="submitPCF(pcf.$valid)">Submit</button>
+			<button class="button cancel" ng-click="cancel()">Cancel</button>
+		</div>
+	</div>
+</body>
+
+<!-- Modules -->
+<!--script src="/js/auto-validate.js"></script -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+</html>

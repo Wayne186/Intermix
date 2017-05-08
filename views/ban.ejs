@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en" ng-app="banPage">
+
+<head>
+    <script src="/js/env.js"></script>
+    <title>Intermix.com </title>
+</head>
+
+<body>
+    <div id="div1">
+
+        <div ng-controller="banUserCtrl">
+            <form name="banUserForm" ng-submit="submitBanUserForm(banUserForm.$valid)">
+                <input type="text" placeholder="Username" class="form-control" ng-model="banUserModel.username"></br>
+                <input type="submit" value="Ban User">
+            </form>
+        </div>
+        <!-- <p>{{ signIn | json }}</p> -->
+        <div ng-controller="banProjCtrl">
+            <form name="banProjForm" ng-submit="submitBanProjForm(banProjForm.$valid)">
+                <input type="text" placeholder="Username" class="form-control" ng-model="banProjModel.projectName"></br>
+                <input type="submit" value="Ban Project">
+            </form>
+        </div>
+
+    </div>
+
+</body>
+
+<!-- Modules -->
+<!--script src="/js/auto-validate.js"></script -->
+<script src="js/angular.js"></script>
+<script src="js/ban.js"></script>
+
+</html>

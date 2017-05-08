@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en" ng-app="AnalyticPage">
+
+<head>
+    <script src="/js/env.js"></script>
+    <title>Intermix.com </title>
+</head>
+
+<body ng-init="loadData()">
+    
+    
+    <div class="proj" ng-controller="projCtrl">
+        <h1> Projects </h1>
+        <div ng-repeat="p in projects">
+            <h4>Project Name: {{ p.projectName }}</h4>
+            <p>Number of Members: {{ p.numberOfMembers }}</p>
+        </div>
+        </br></br>
+    </div> 
+
+    
+    <div class="users" ng-controller="userCtrl">
+        <h1> Users </h1>
+        <div ng-repeat="u in users">
+            <h4>Username: {{ u.username }}</h4>
+            <p>User Count: {{ u.userCount }}</p>
+        </div>
+        </br></br>
+    </div>
+
+    <div class="skills" ng-controller="skillCtrl">
+        <h1> Skills </h1>
+        <div ng-repeat="s in skills">
+            <h4>Skill Name: {{ s.skillName }}</h4>
+            <p>Skill Count: {{ s.skillCount }}</p>
+        </div>
+        </br></br>
+    </div>
+
+</body>
+
+<!-- Modules -->
+<!--script src="/js/auto-validate.js"></script -->
+<script src="js/angular.js"></script>
+<script src="js/analytic.js"></script>
+
+</html>

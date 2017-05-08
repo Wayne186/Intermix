@@ -1,0 +1,69 @@
+#mainboxlink a:hover {
+	color: #e3ecf2;
+	transition: 0.4s;
+}
+
+#mainboxlink a:not(:hover) {
+	color: black;
+	transition: 0.4s;
+}
+
+#nav_wrapper{
+    height: 80px;
+    width: 100%;
+    background: #033347;
+    margin-top: 0;
+    line-height: 25px;
+    opacity: 0.7;
+    filter：alpha (opacity=70);
+}
+
+#nav_wrapper a{
+    color: white;
+    text-decoration: none;
+    padding: 10px
+}
+
+#nav_wrapper h1{
+    font-family:"AppleGothic";
+    float:left;
+    font-size: 35px;
+    color: white;
+}
+
+#nav_wrapper ul{
+    float:right;
+}
+
+#nav_wrapper ul li{
+    list-style-type:none;
+    display: inline-block;
+}
+
+#nav_wrapper ul li a{
+    padding: 28px;
+    font-size: 20px;
+    font-family:"AppleGothic";
+    text-decoration: none;
+    color: white;
+    position: relative;
+    top: 28px;
+}
+
+#nav_wrapper ul li a:hover{
+    background-color: black;
+}
+
+#nav_wrapper ul li button{
+    padding: 27px;
+    font-size: 20px;
+    font-family:"AppleGothic";
+    background: #033347;
+    text-decoration: none;
+    color: white;
+    border-style: none;
+}
+
+#nav_wrapper ul li button:hover{
+    background-color: black;
+}
